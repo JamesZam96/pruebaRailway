@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 
+
 // Registro de clientes
 Route::get('/register/customer', [RegisterController::class, 'showRegistrationFormCustomer'])->name('register.customer');
 Route::post('/register/customer', [RegisterController::class, 'createCustomer'])->name('register.customer.submit');
