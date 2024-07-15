@@ -11,12 +11,12 @@ class LoginController extends Controller
     //
     public function showLoginFormCustomer()
     {
-        return view('auth.customer_login');
+        return view('Auth.customer_login');
     }
     
     public function showLoginFormCompany()
     {
-        return view('auth.company_login');
+        return view('Auth.company_login');
     }
 
     public function loginCustomer(Request $request)

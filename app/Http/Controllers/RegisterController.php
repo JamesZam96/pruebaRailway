@@ -17,17 +17,17 @@ class RegisterController extends Controller
 
     public function showRegistrationFormCustomer()
     {
-        return view('auth.customer_register');
+        return view('Auth.customer_register');
     }
 
     public function showRegistrationFormCompany()
     {
-        return view('auth.company_register');
+        return view('Auth.company_register');
     }
 
     public function showRegistrationFormDelivery()
     {
-        return view('auth.delivery_register');
+        return view('Auth.delivery_register');
     }
 
     public function createCustomer(Request $request)
