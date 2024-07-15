@@ -22,12 +22,14 @@
                         <li class="nav-item">
                             <span class="nav-link text-light">Bienvenido {{ Auth::user()->name }}</span>
                         </li>
-                    @else
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="{{ route('login.form.customer') }}">Iniciar sesión</a>
-                        </li>
                     @endif
-                @endauth    
+                @endauth 
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ route('login.form.customer') }}">Iniciar sesión</a>
+                    </li>
+                @endguest
+                       
             </ul>
            
             <div class="d-flex align-items-center ms-3">
