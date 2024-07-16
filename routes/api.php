@@ -23,10 +23,10 @@ Route::post('/login/company', [LoginApiController::class, 'loginCompany']);
 
 Route::middleware(['company.auth', 'role.company','auth:sanctum'])->group(function(){
     Route::post('/logout/company', [LoginApiController::class, 'logoutCompany']);
-    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-    Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
-    Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
-    Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('categories.show');
-    Route::patch('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
-    Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index.api');
+    Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store.api');
+    Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit.api');
+    Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('categories.show.api');
+    Route::patch('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update.api');
+    Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy.api');
 });
