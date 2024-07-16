@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LoginApiController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,19 +20,19 @@ Route::get('/register/delivery', [RegisterController::class, 'showRegistrationFo
 Route::post('/register/delivery', [RegisterController::class, 'createDelivery'])->name('register.delivery.submit');
 
 // Login cliente
-Route::get('login/customer', [LoginController::class, 'showLoginFormCustomer'])->name('login.form.customer');
-Route::post('login/customer', [LoginController::class, 'loginCustomer'])->name('login.customer');
+Route::get('login/customer', [LoginApiController::class, 'showLoginFormCustomer'])->name('login.form.customer');
+Route::post('login/customer', [LoginApiController::class, 'loginCustomer'])->name('login.customer');
 
 // Login empresa
-Route::get('login/company', [LoginController::class, 'showLoginFormCompany'])->name('login.form.company');
-Route::post('login/company', [LoginController::class, 'loginCompany'])->name('login.company');
+Route::get('login/company', [LoginApiController::class, 'showLoginFormCompany'])->name('login.form.company');
+Route::post('login/company', [LoginApiController::class, 'loginCompany'])->name('login.company');
 
 
 // Logout empresa
-Route::post('/logout/company', [LoginController::class, 'logoutCompany'])->name('logout.company');
+Route::post('/logout/company', [LoginApiController::class, 'logoutCompany'])->name('logout.company');
 
 
 // Logout customer
-Route::post('/logout/customer', [LoginController::class, 'logoutCustomer'])->name('logout.customer');
+Route::post('/logout/customer', [LoginApiController::class, 'logoutCustomer'])->name('logout.customer');
 
 

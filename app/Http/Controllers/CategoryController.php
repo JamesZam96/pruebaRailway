@@ -37,6 +37,11 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Auth::user()->categories;
+        if (request()->expectsJson()){
+            return response()->json([
+                'categories' => $categories
+            ]);
+        }
         return view('categories.index', compact('categories'));
     }
 
@@ -57,6 +62,13 @@ class CategoryController extends Controller
             'user_id' => Auth::id()
         ]);
 
+        if ($request->wantsJson()) {
+            return response()->json([
+                'message' => 'category_created',
+                'category' => $category
+            ]);
+        }
+
         return redirect()->route('categories.index');
     }
 
@@ -69,6 +81,13 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Auth::user()->categories()->findOrFail($id);
+
+        if (request()->expectsJson()) {
+            return response()->json([
+                'category' => $category
+            ]);
+        }
+
         return view('categories.show', compact('category'));
     }
 
@@ -81,6 +100,11 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Auth::user()->categories()->findOrFail($id);
+        if (request()->expectsJson()) {
+            return response()->json([
+                'category' => $category
+            ]);
+        }
         return view('categories.edit', compact('category'));
     }
 
@@ -99,6 +123,12 @@ class CategoryController extends Controller
             'description' => $request->description,
             'user_id' => Auth::id()
         ]);
+        if (request()->expectsJson()) {
+            return response()->json([
+                'message' => 'category_updated',
+                'category' => $category
+            ]);
+        }
         if (!$category) {
             abort(404, 'Category not found');
         }
@@ -115,6 +145,12 @@ class CategoryController extends Controller
     {
         $category = Auth::user()->categories()->findOrFail($id);
         $category->delete();
+        if (request()->expectsJson()) {
+            return response()->json([
+                'message' => 'category_deleted',
+                'category' => $category
+            ]);
+        }
         if (!$category) {
             abort(404, 'Category not found');
         }

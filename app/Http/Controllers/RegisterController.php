@@ -44,6 +44,14 @@ class RegisterController extends Controller
         $customerRole = RoleModel::where('name', 'customer')->first();
         $user->roles()->attach($customerRole);
         Auth::login($user);
+
+        // Retornar JSON si se espera una respuesta JSON
+        if ($request->wantsJson()) {
+            return response()->json([
+                'status' => 'Usuario registrado correctamente',
+                'user' => $user,
+            ], 201);
+        }
         
         return redirect()->route('home.customer')->with('status', 'Usuario registrado correctamente');
 
@@ -106,6 +114,13 @@ class RegisterController extends Controller
         $companyRole = RoleModel::where('name', 'company')->first();
         $user->roles()->attach($companyRole);
         Auth::login($user);
+        // Retornar JSON si se espera una respuesta JSON
+        if ($request->wantsJson()) {
+            return response()->json([
+                'status' => 'Usuario registrado correctamente',
+                'user' => $user,
+            ], 201);
+        }
         return redirect()->route('home.company');
     }
 
